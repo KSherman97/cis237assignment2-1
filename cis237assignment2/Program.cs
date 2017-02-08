@@ -54,9 +54,10 @@ namespace cis237assignment2
             /// <summary>
             /// Create a new instance of a mazeSolver.
             /// </summary>
-            MazeSolver mazeSolver = new MazeSolver();
+            MazeSolver mazeSolver = new MazeSolver(); // Call the blank constructor
 
             //Create the second maze by transposing the first maze
+            // assignt the results of the transposition to the maze2 
             char[,] maze2 = transposeMaze(maze1);
 
             /// <summary>
@@ -92,20 +93,19 @@ namespace cis237assignment2
         /// <returns>transposedMaze</returns>
         static char[,] transposeMaze(char[,] mazeToTranspose)
         {
-            int mazeSize = mazeToTranspose.GetLength(0);
-            char[,] maze = new char[mazeSize, mazeSize];
+            int mazeSize = mazeToTranspose.GetLength(0);    // assign the maze length as mazesize
+            char[,] maze = new char[mazeSize, mazeSize];    // initialize a new char array with dimensions of mazesize
             //Write code her to create a transposed maze.
 
             int xPosition, yPosition;
-
-            for (xPosition = 0; xPosition <= mazeSize - 1; xPosition++)
+            for (xPosition = 0; xPosition <= mazeSize - 1; xPosition++) // for loop to increment the xposition
             {
-                for (yPosition = 0; yPosition <= mazeSize - 1; yPosition++)
+                for (yPosition = 0; yPosition <= mazeSize - 1; yPosition++)// for loop to increment the yposition
                 {
-                    maze[xPosition, yPosition] = mazeToTranspose[yPosition, xPosition];
+                    maze[xPosition, yPosition] = mazeToTranspose[yPosition, xPosition]; // replace each x index with each y index, and y with x
                 }
             }
-            return maze;
+            return maze; // return the new array
         }
     }
 }
