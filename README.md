@@ -2,6 +2,7 @@
 ## Due 02-08-2017
 
 ## Author
+Kyle Sherman
 
 ## Description
 
@@ -41,5 +42,10 @@ Don't forget that you must have a base case for your recursive method or you wil
 | **Total**           | **100**|
 
 ## Outside Resources Used
+[Generic PSudocode recursive backtracking algorithm](https://www.cs.bu.edu/teaching/alg/maze/)
+
+[List of maze algorithms](http://www.astrolog.org/labyrnth/algrithm.htm) Used for personal research into alternative methods
+
 
 ## Known Problems, Issues, And/Or Errors in the Program
+No known issues

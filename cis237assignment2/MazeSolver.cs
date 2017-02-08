@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Kyle Sherman
+// 2/8/2017
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -106,7 +109,7 @@ namespace cis237assignment2
 
         private void printMaze()
         {
-            Thread.Sleep(250);
+            Thread.Sleep(100);
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Solving Maze." + Environment.NewLine + "Step: " + ++steps + Environment.NewLine);

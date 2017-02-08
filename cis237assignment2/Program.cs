@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Kyle Sherman
+// 2/8/2017
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +19,8 @@ namespace cis237assignment2
         /// <param name="args"></param>
         static void Main(string[] args)
         {
+            Console.BufferHeight = Int16.MaxValue - 1;
+
             /// <summary>
             /// Starting Coordinates.
             /// </summary>
@@ -28,7 +33,7 @@ namespace cis237assignment2
             /// You don't have to, but it might make your life easier.
             /// </summary>
             char[,] maze1 = 
-            { { '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#' },
+            {{'#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#' },
             { '#', '.', '.', '.', '#', '.', '.', '.', '.', '.', '.', '#' },
             { '#', '.', '#', '.', '#', '.', '#', '#', '#', '#', '.', '#' },
             { '#', '#', '#', '.', '#', '.', '.', '.', '.', '#', '.', '#' },
@@ -39,7 +44,7 @@ namespace cis237assignment2
             { '#', '.', '.', '.', '.', '.', '.', '.', '.', '#', '.', '#' },
             { '#', '#', '#', '#', '#', '#', '.', '#', '#', '#', '.', '.' },
             { '#', '.', '.', '.', '.', '.', '.', '#', '.', '.', '.', '#' },
-            { '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#' } };
+            { '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#' }};
 
             /**char[,] maze1 = { {'#', '#', '#', '#'},
                               {'#', '.', '.', '#'},
@@ -58,7 +63,6 @@ namespace cis237assignment2
             /// Tell the instance to solve the first maze with the passed maze, and start coordinates.
             /// </summary>
             mazeSolver.SolveMaze(maze1, X_START, Y_START);
-
             Console.WriteLine("Press any key to solve the 2nd maze");
             Console.ReadKey();
             Console.Clear();
