@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace cis237assignment2
 {
@@ -20,14 +20,15 @@ namespace cis237assignment2
         char[,] maze;
         int xStart;
         int yStart;
+        int mazeSize;
+        bool mazeSolved;
+        int steps = 0;
 
         /// <summary>
         /// Default Constuctor to setup a new maze solver.
         /// </summary>
         public MazeSolver()
         {}
-
-
         /// <summary>
         /// This is the public method that will allow someone to use this class to solve the maze.
         /// Feel free to change the return type, or add more parameters if you like, but it can be done
@@ -41,8 +42,13 @@ namespace cis237assignment2
             this.maze = maze;
             this.xStart = xStart;
             this.yStart = yStart;
+            this.mazeSize = maze.GetLength(0)-1;
+            mazeSolved = false;
+            steps = 0;
 
+            //printMaze();
             //Do work needed to use mazeTraversal recursive call and solve the maze.
+            mazeTraversal(xStart, yStart);
         }
 
 
@@ -51,9 +57,75 @@ namespace cis237assignment2
         /// Feel free to change the return type if you like, or pass in parameters that you might need.
         /// This is only a very small starting point.
         /// </summary>
-        private void mazeTraversal()
+        private void mazeTraversal(int xPosition, int yPosition)
         {
-            //Implement maze traversal recursive call
+            this.mazeSize = maze.GetLength(0)-1;
+
+            maze[xPosition, yPosition] = 'x';
+           
+            if (!mazeSolved)
+            {
+                printMaze();
+                if (xPosition >= mazeSize || xPosition <= -1 || yPosition >= mazeSize || yPosition <= -1)
+                {
+                    mazeSolved = true;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine(Environment.NewLine + "Maze solved in {0} steps", steps);
+                    Console.ResetColor();
+                }
+                else
+                {
+                    if (maze[xPosition, yPosition + 1] == '.')
+                    {
+                        mazeTraversal(xPosition, yPosition + 1);
+                        //Console.WriteLine("MoveRight");
+                    }
+                    if (maze[xPosition - 1, yPosition] == '.')
+                    {
+                        mazeTraversal(xPosition - 1, yPosition);
+                        //Console.WriteLine("MoveDown");
+                    }
+                    if (maze[xPosition + 1, yPosition] == '.')
+                    {
+                        mazeTraversal(xPosition + 1, yPosition);
+                        //Console.WriteLine("MoveUp");
+                    }
+                    if (maze[xPosition, yPosition - 1] == '.')
+                    {
+                        mazeTraversal(xPosition, yPosition - 1);
+                        //Console.WriteLine("MoveLeft");
+                    }
+                    if (!mazeSolved)
+                    {
+                        maze[xPosition, yPosition] = '0' ;
+                        printMaze();
+                    }
+                }
+            }
+        }
+
+        private void printMaze()
+        {
+            Thread.Sleep(250);
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Solving Maze." + Environment.NewLine + "Step: " + ++steps + Environment.NewLine);
+            Console.ResetColor();
+
+            int xPosition, yPosition;
+            for (xPosition = 0; xPosition < maze.GetLength(0); xPosition++)
+            {
+                for (yPosition = 0; yPosition < maze.GetLength(0); yPosition++)
+                {
+                    if (maze[xPosition, yPosition] == 'x')
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                    if (maze[xPosition, yPosition] == '0')
+                        Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("{0}", maze[xPosition, yPosition]);
+                    Console.ResetColor();
+                }
+                Console.WriteLine();
+            }
         }
     }
 }

@@ -41,6 +41,11 @@ namespace cis237assignment2
             { '#', '.', '.', '.', '.', '.', '.', '#', '.', '.', '.', '#' },
             { '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#' } };
 
+            /**char[,] maze1 = { {'#', '#', '#', '#'},
+                              {'#', '.', '.', '#'},
+                              {'#', '#', '.', '.'},
+                              {'#', '#', '#', '#'} };**/
+
             /// <summary>
             /// Create a new instance of a mazeSolver.
             /// </summary>
@@ -54,9 +59,15 @@ namespace cis237assignment2
             /// </summary>
             mazeSolver.SolveMaze(maze1, X_START, Y_START);
 
+            Console.WriteLine("Press any key to solve the 2nd maze");
+            Console.ReadKey();
+            Console.Clear();
+
             //Solve the transposed maze.
             mazeSolver.SolveMaze(maze2, X_START, Y_START);
-
+            Console.WriteLine("Press any key to close...");
+            Console.ReadKey();
+            Console.Clear();
         }
 
         /// <summary>
@@ -77,8 +88,20 @@ namespace cis237assignment2
         /// <returns>transposedMaze</returns>
         static char[,] transposeMaze(char[,] mazeToTranspose)
         {
+            int mazeSize = mazeToTranspose.GetLength(0);
+            char[,] maze = new char[mazeSize, mazeSize];
             //Write code her to create a transposed maze.
-            return new char[1, 1];
+
+            int xPosition, yPosition;
+
+            for (xPosition = 0; xPosition <= mazeSize - 1; xPosition++)
+            {
+                for (yPosition = 0; yPosition <= mazeSize - 1; yPosition++)
+                {
+                    maze[xPosition, yPosition] = mazeToTranspose[yPosition, xPosition];
+                }
+            }
+            return maze;
         }
     }
 }
