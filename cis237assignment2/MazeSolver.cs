@@ -20,12 +20,12 @@ namespace cis237assignment2
         /// <summary>
         /// Class level memeber variable for the mazesolver class
         /// </summary>
-        char[,] maze;
-        int xStart;
-        int yStart;
-        int mazeSize;
-        bool mazeSolved;
-        int steps = 0;
+        char[,] maze;   // char that holds the maze 
+        int xStart;      // int for the xstarting index 
+        int yStart;     // int for the ystarting index 
+        int mazeSize; // int to store the maze size
+        bool mazeSolved;    // bool to store whether or not the maze is solved
+        int steps = 0; // int used to count how many steps have been made 
 
         /// <summary>
         /// Default Constuctor to setup a new maze solver.
@@ -37,7 +37,7 @@ namespace cis237assignment2
         /// Feel free to change the return type, or add more parameters if you like, but it can be done
         /// exactly as it is here without adding anything other than code in the body.
         /// </summary>
-        public void SolveMaze(char[,] maze, int xStart, int yStart)
+        public void SolveMaze(char[,] maze, int xStart, int yStart) // pass in the maze, xindex, and y index
         {
             //Assign passed in variables to the class level ones. It was not done in the constuctor so that
             //a new maze could be passed in to this solve method without having to create a new instance.
@@ -45,12 +45,12 @@ namespace cis237assignment2
             this.maze = maze;
             this.xStart = xStart;
             this.yStart = yStart;
-            mazeSolved = false;
-            steps = 0;
+            mazeSolved = false; // initialize the mazeSolved bool to false
+            steps = 0; //reset the steps int to 0
 
             //printMaze();
             //Do work needed to use mazeTraversal recursive call and solve the maze.
-            mazeTraversal(xStart, yStart);
+            mazeTraversal(xStart, yStart);  // call the recursive mazeTraversal method
         }
 
 
@@ -59,7 +59,7 @@ namespace cis237assignment2
         /// Feel free to change the return type if you like, or pass in parameters that you might need.
         /// This is only a very small starting point.
         /// </summary>
-        private void mazeTraversal(int xPosition, int yPosition)
+        private void mazeTraversal(int xPosition, int yPosition) // uses the xposition and yposition
         {
             this.mazeSize = maze.GetLength(0)-1; // mazeSize is the arraylength - 1
 
