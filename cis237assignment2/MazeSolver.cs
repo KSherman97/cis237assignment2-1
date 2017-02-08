@@ -109,7 +109,7 @@ namespace cis237assignment2
 
         private void printMaze()
         {
-            Thread.Sleep(100);
+            Thread.Sleep(150);
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Solving Maze." + Environment.NewLine + "Step: " + ++steps + Environment.NewLine);
